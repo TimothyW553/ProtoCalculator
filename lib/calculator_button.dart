@@ -46,14 +46,14 @@ class CalculatorButton extends StatelessWidget {
             double.parse(numberString);
         Provider.of<CalculatorResult>(context, listen: false).calculate = true;
       }
-      Provider.of<CalculatorResult>(context, listen: false).numberString = "";
+      Provider.of<CalculatorResult>(context, listen: false).numberString = "0";
       Provider.of<CalculatorResult>(context, listen: false).operation = title;
     } else if (title == "=") {
       Provider.of<CalculatorResult>(context, listen: false).calculateValue();
       Provider.of<CalculatorResult>(context, listen: false).calculate = false;
     } else {
       // a number
-      if (numberString == '0') {
+      if (numberString == "0") {
         Provider.of<CalculatorResult>(context, listen: false).numberString = "";
       }
       Provider.of<CalculatorResult>(context, listen: false).numberString +=
