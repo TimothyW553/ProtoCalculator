@@ -10,20 +10,22 @@ class CalculatorButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      flex: 1,
       child: ButtonTheme(
         height: double.infinity,
-        child: TextButton(
-          child: Text(
-            text,
-            style: const TextStyle(
-              fontSize: 37.0,
-              color: Colors.black,
+        child: SizedBox(
+          height: double.infinity,
+          child: TextButton(
+            child: Text(
+              text,
+              style: const TextStyle(
+                fontSize: 37.0,
+                color: Colors.black,
+              ),
             ),
+            onPressed: () {
+              handlePress(text, context);
+            },
           ),
-          onPressed: () {
-            handlePress(text, context);
-          },
         ),
       ),
     );
