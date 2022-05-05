@@ -12,14 +12,14 @@ class CalculatorResult with ChangeNotifier {
 
   /// Double result to perform calculations on
   double _result = 0.0;
-  bool _calculate = false;
+  bool _shouldCalculate = false;
 
   /// Getters
   String get numberString => _numberString;
   String get displayString => _displayString;
   String get operation => _operation;
   double get result => _result;
-  bool get calculate => _calculate;
+  bool get shouldCalculate => _shouldCalculate;
 
   /// Setters
   set numberString(String value) {
@@ -43,7 +43,7 @@ class CalculatorResult with ChangeNotifier {
   }
 
   set calculate(bool value) {
-    _calculate = value;
+    _shouldCalculate = value;
     notifyListeners();
   }
 

@@ -32,34 +32,32 @@ class CalculatorButton extends StatelessWidget {
   }
 
   void handlePress(String title, BuildContext context) {
-    String numberString =
-        Provider.of<CalculatorResult>(context, listen: false).numberString;
-    bool calculate =
-        Provider.of<CalculatorResult>(context, listen: false).calculate;
+    var calculator = context.read<CalculatorResult>();
+
+    final numberString = calculator.numberString;
+    final calculate = calculator.shouldCalculate;
 
     if (title == "+" || title == "-" || title == "×" || title == "÷") {
+      // use type enum or classes
       if (calculate) {
         // if we should calculate
-        Provider.of<CalculatorResult>(context, listen: false).calculateValue();
+        calculator.calculateValue();
       } else {
-        Provider.of<CalculatorResult>(context, listen: false).result =
-            double.parse(numberString);
-        Provider.of<CalculatorResult>(context, listen: false).calculate = true;
+        calculator.result = double.parse(numberString);
+        calculator.calculate = true;
       }
-      Provider.of<CalculatorResult>(context, listen: false).numberString = "0";
-      Provider.of<CalculatorResult>(context, listen: false).operation = title;
+      calculator.numberString = "0";
+      calculator.operation = title;
     } else if (title == "=") {
-      Provider.of<CalculatorResult>(context, listen: false).calculateValue();
-      Provider.of<CalculatorResult>(context, listen: false).calculate = false;
+      calculator.calculateValue();
+      calculator.calculate = false;
     } else {
       // a number
       if (numberString == "0") {
-        Provider.of<CalculatorResult>(context, listen: false).numberString = "";
+        calculator.numberString = "";
       }
-      Provider.of<CalculatorResult>(context, listen: false).numberString +=
-          title;
-      Provider.of<CalculatorResult>(context, listen: false).displayString =
-          numberString;
+      calculator.numberString += title;
+      calculator.displayString = numberString;
     }
   }
 }
