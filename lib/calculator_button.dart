@@ -37,6 +37,7 @@ class CalculatorButton extends StatelessWidget {
     final numberString = calculator.numberString;
     final calculate = calculator.shouldCalculate;
 
+    // use "guard clauses" method to make code cleaner
     if (title == "+" || title == "-" || title == "×" || title == "÷") {
       // use type enum or classes
       if (calculate) {
